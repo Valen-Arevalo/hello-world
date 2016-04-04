@@ -1,0 +1,13 @@
+##Requiere maptools
+##Requiere rgdal
+##Ejemplo con la capa inb_data (datos de presencia/ausencia de especies en cada UTM 10x10)
+con información sobre las coordenadas de los centroides)
+
+##Determinamos las columnas con la información geográfica y el sistema de referencia en formato Proj4 (spatialreference.org)
+
+>coordinates(inb_data)<-c('XCOORD', 'YCOORD')
+>proj4string(inb_data)<-CRS("+proj=utm +zone=30 +ellps=intl +units=m +no_defs")
+
+##Creamos el shapefile, que contendrá los archivos '.shp', '.shx' y '.dbf' el argumento fn= determina el nombre del archivo
+
+>writeSpatialShape(inb_data, fn='inb_data2')
